@@ -86,29 +86,16 @@ export default function Page() {
               desktop app — powered by Supabase.
             </p>
 
-            <div className="flex flex-wrap items-center gap-2">
-              <Badge variant="secondary">Supabase</Badge>
-              <Badge variant="secondary">Tauri</Badge>
-              <Badge variant="secondary">React</Badge>
-              <Badge variant="secondary">TypeScript</Badge>
-            </div>
-
             {/* Install command */}
-            <div className="w-full max-w-lg">
+            <div className="w-full max-w-lg flex flex-col gap-2">
+              <p className="text-sm font-medium text-muted-foreground">
+                Install using the command below:
+              </p>
               <div className="flex items-center gap-3 rounded-lg border bg-card px-4 py-3 font-mono text-sm">
-                <Copy className="size-4 shrink-0 text-primary" />
                 <code className="flex-1 select-all truncate">{INSTALL_COMMAND}</code>
                 <CopyButton text={INSTALL_COMMAND} />
               </div>
             </div>
-
-            {/* CTA */}
-            <Button size="lg" asChild>
-              <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
-                <Github className="size-4" data-icon="inline-start" />
-                Open Source
-              </a>
-            </Button>
 
             {/* Features grid */}
             <div className="grid w-full grid-cols-2 gap-3 pt-4">
