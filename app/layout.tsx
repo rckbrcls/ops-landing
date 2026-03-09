@@ -1,15 +1,17 @@
-import { Geist, Geist_Mono, Inter } from "next/font/google"
+import { Inter } from "next/font/google"
+import type { Metadata } from "next"
 
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
-const inter = Inter({subsets:['latin'],variable:'--font-sans'})
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 
-const fontMono = Geist_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-})
+export const metadata: Metadata = {
+  title: "OPS — Open-source Operations Manager",
+  description:
+    "A native desktop app for product management, inventory, sales, and analytics. Built on Supabase with real-time sync and role-based access control.",
+}
 
 export default function RootLayout({
   children,
@@ -17,11 +19,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={cn("antialiased", fontMono.variable, "font-sans", inter.variable)}
-    >
+    <html lang="en" suppressHydrationWarning className={cn("antialiased", inter.variable)}>
       <body>
         <ThemeProvider>{children}</ThemeProvider>
       </body>
