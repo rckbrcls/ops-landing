@@ -1,14 +1,13 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 import {
   Github,
   Package,
   BarChart3,
   ShoppingCart,
   Warehouse,
-  Shield,
-  Monitor,
   Check,
   Copy,
 } from "lucide-react"
@@ -41,16 +40,6 @@ const features = [
     icon: BarChart3,
     title: "Analytics",
     description: "Revenue, top products, and operational dashboards.",
-  },
-  {
-    icon: Shield,
-    title: "RBAC",
-    description: "Role-based access control powered by Supabase RLS.",
-  },
-  {
-    icon: Monitor,
-    title: "Native Desktop",
-    description: "Tauri-based app with cross-platform builds.",
   },
 ]
 
@@ -86,55 +75,62 @@ export default function Page() {
 
       <Separator />
 
-      {/* Hero */}
-      <main className="flex flex-1 flex-col items-center justify-center gap-10 px-6 py-20">
-        <div className="flex max-w-xl flex-col items-center gap-5 text-center">
-          <h1 className="font-brand text-5xl tracking-tight sm:text-6xl">OPS</h1>
-          <p className="text-lg text-muted-foreground">
-            Open-source operations manager. Products, inventory, sales, and analytics in a native
-            desktop app — powered by Supabase.
-          </p>
+      {/* Hero — split layout */}
+      <main className="flex flex-1 flex-col items-center gap-20 px-6 py-20">
+        <div className="grid w-full max-w-6xl grid-cols-1 items-center gap-12 lg:grid-cols-2">
+          {/* Left — text + features */}
+          <div className="flex flex-col items-start gap-6">
+            <h1 className="font-brand text-5xl tracking-tight sm:text-6xl">OPS</h1>
+            <p className="text-lg text-muted-foreground">
+              Open-source operations manager. Products, inventory, sales, and analytics in a native
+              desktop app — powered by Supabase.
+            </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-2">
-            <Badge variant="secondary">Supabase</Badge>
-            <Badge variant="secondary">Tauri</Badge>
-            <Badge variant="secondary">React</Badge>
-            <Badge variant="secondary">TypeScript</Badge>
+            <div className="flex flex-wrap items-center gap-2">
+              <Badge variant="secondary">Supabase</Badge>
+              <Badge variant="secondary">Tauri</Badge>
+              <Badge variant="secondary">React</Badge>
+              <Badge variant="secondary">TypeScript</Badge>
+            </div>
+
+            {/* Install command */}
+            <div className="w-full max-w-lg">
+              <div className="flex items-center gap-3 rounded-lg border bg-card px-4 py-3 font-mono text-sm">
+                <Copy className="size-4 shrink-0 text-primary" />
+                <code className="flex-1 select-all truncate">{INSTALL_COMMAND}</code>
+                <CopyButton text={INSTALL_COMMAND} />
+              </div>
+            </div>
+
+            {/* CTA */}
+            <Button size="lg" asChild>
+              <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
+                <Github className="size-4" data-icon="inline-start" />
+                Open Source
+              </a>
+            </Button>
+
+            {/* Features grid */}
+            <div className="grid w-full grid-cols-2 gap-3 pt-4">
+              {features.map((feature) => (
+                <Card key={feature.title} className="bg-card/50">
+                  <CardHeader>
+                    <div className="mb-2 flex size-8 items-center justify-center rounded-md bg-primary/10">
+                      <feature.icon className="size-4 text-primary" />
+                    </div>
+                    <CardTitle className="text-sm">{feature.title}</CardTitle>
+                    <CardDescription className="text-xs">{feature.description}</CardDescription>
+                  </CardHeader>
+                </Card>
+              ))}
+            </div>
           </div>
-        </div>
 
-        {/* Install command */}
-        <div className="w-full max-w-lg">
-          <div className="flex items-center gap-3 rounded-lg border bg-card px-4 py-3 font-mono text-sm">
-            <Copy className="size-4 shrink-0 text-primary" />
-            <code className="flex-1 select-all truncate">{INSTALL_COMMAND}</code>
-            <CopyButton text={INSTALL_COMMAND} />
+          {/* Right — screenshots */}
+          <div className="flex flex-col gap-6">
+            <Image src="/screenshots/products.png" alt="Product catalog" width={1400} height={900} className="w-full rounded-xl" />
+            <Image src="/screenshots/analytics.png" alt="Analytics dashboard" width={1400} height={900} className="w-full rounded-xl" />
           </div>
-        </div>
-
-        {/* CTA */}
-        <div className="flex gap-3">
-          <Button size="lg" asChild>
-            <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
-              <Github className="size-4" data-icon="inline-start" />
-              Open Source
-            </a>
-          </Button>
-        </div>
-
-        {/* Features grid */}
-        <div className="grid w-full max-w-3xl grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature) => (
-            <Card key={feature.title} className="bg-card/50">
-              <CardHeader>
-                <div className="mb-2 flex size-8 items-center justify-center rounded-md bg-primary/10">
-                  <feature.icon className="size-4 text-primary" />
-                </div>
-                <CardTitle className="text-sm">{feature.title}</CardTitle>
-                <CardDescription className="text-xs">{feature.description}</CardDescription>
-              </CardHeader>
-            </Card>
-          ))}
         </div>
       </main>
 
