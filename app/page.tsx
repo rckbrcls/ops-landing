@@ -129,12 +129,12 @@ export default function Page() {
         <span className="text-center">
           Built by{" "}
           <a
-            href="https://polterware.com"
+            href="https://erickbarcelos.com"
             target="_blank"
             rel="noopener noreferrer"
             className="text-foreground underline-offset-4 hover:underline"
           >
-            Polterware
+            Erick Barcelos
           </a>
         </span>
       </footer>
