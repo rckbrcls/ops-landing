@@ -16,6 +16,9 @@ export const metadata: Metadata = {
     shortcut: "/ops-logo.png",
     apple: "/ops-logo.png",
   },
+  other: {
+    google: "notranslate",
+  },
 }
 
 export default function RootLayout({
@@ -25,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className={cn("antialiased", inter.variable)}>
-      <body>
+      <body translate="no">
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
