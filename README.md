@@ -7,25 +7,24 @@ Public landing page for Ops, the open-source desktop workspace for product catal
 
 ## Summary
 
-- [What it is](#what-it-is)
-- [Goals](#goals)
-- [Page structure](#page-structure)
-- [Project map](#project-map)
-- [Current state](#current-state)
-- [Working notes](#working-notes)
+- Public landing page for the Ops desktop operations app.
+- Solves product positioning, installation guidance, feature explanation, and public routing outside the desktop codebase.
+- Main stack: Next.js, React, TypeScript, Tailwind CSS, next-themes, lucide-react, and landing-page sections.
+- Current status: active landing app inside the DOST/Ops workspace.
+- Technical value: separates public product copy from the Tauri operations desktop app.
 
-## What it is
+## Overview
 
 `ops-landing` is the marketing and installation page for the Ops desktop application. It explains the product in one screen, shows core screenshots, links to GitHub, and exposes the install command.
 
-## Goals
+## Motivation
 
 - Communicate Ops as a practical desktop operations app, not a generic SaaS landing page.
 - Make installation obvious through the curl command and copy action.
 - Show the product surface through screenshots of catalog and analytics workflows.
 - Keep the page lightweight enough to maintain separately from the desktop app.
 
-## Page structure
+## Features
 
 - Header with the Ops brand lockup, alpha badge, and GitHub link.
 - Hero headline for the desktop workspace value proposition.
@@ -34,7 +33,7 @@ Public landing page for Ops, the open-source desktop workspace for product catal
 - Screenshot column for product and analytics views.
 - Footer crediting Erick Barcelos.
 
-## Project map
+## Project Structure
 
 ```text
 ops-landing/
@@ -45,11 +44,11 @@ ops-landing/
 └── package.json
 ```
 
-## Current state
+## Current Status
 
 The page is a focused Next.js app using Tailwind, shadcn-style primitives, and static screenshots. The root layout already includes browser translation protection.
 
-## Working notes
+## Known Limitations
 
 - Keep visible copy short and product-oriented.
 - Keep the install command aligned with the actual Ops repository.
